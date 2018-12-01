@@ -19,7 +19,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _dateInterval = dateInterval;
+        self.dateInterval = dateInterval;
         
         self.timeArray = [NSArray array];
         
@@ -37,31 +37,31 @@
 }
 
 - (void)creatData:(DateInterval)dateInterval{
-    _yearArray = [NSMutableArray array];
+    self.yearArray = [NSMutableArray array];
     for (int i = 1970; i < 2099; i ++) {
-        [_yearArray addObject:[NSString stringWithFormat:@"%d年", i]];
+        [self.yearArray addObject:[NSString stringWithFormat:@"%d年", i]];
     }
     
-    _monthArray = [NSMutableArray array];
+    self.monthArray = [NSMutableArray array];
     for (int i = 1; i <= 12; i ++) {
-        [_monthArray addObject:[NSString stringWithFormat:@"%d月", i]];
+        [self.monthArray addObject:[NSString stringWithFormat:@"%d月", i]];
     }
     
-    _dayArray = [NSMutableArray array];
+    self.dayArray = [NSMutableArray array];
     for (int i = 1; i <= 31; i ++) {
-        [_dayArray addObject:[NSString stringWithFormat:@"%d日", i]];
+        [self.dayArray addObject:[NSString stringWithFormat:@"%d日", i]];
     }
     
-    _hourArray = [NSMutableArray array];
+    self.hourArray = [NSMutableArray array];
     for (int i = 0; i < 24; i ++) {
-        [_hourArray addObject:[NSString stringWithFormat:@"%d时", i]];
+        [self.hourArray addObject:[NSString stringWithFormat:@"%d时", i]];
     }
     
-    _minuteArray = [NSMutableArray array];
-    _secondArray = [NSMutableArray array];
+    self.minuteArray = [NSMutableArray array];
+    self.secondArray = [NSMutableArray array];
     for (int i = 0; i <= 59; i ++) {
-        [_minuteArray addObject:[NSString stringWithFormat:@"%d分", i]];
-        [_secondArray addObject:[NSString stringWithFormat:@"%d秒", i]];
+        [self.minuteArray addObject:[NSString stringWithFormat:@"%d分", i]];
+        [self.secondArray addObject:[NSString stringWithFormat:@"%d秒", i]];
     }
     
     NSDate *date = [NSDate date];
@@ -262,7 +262,7 @@
     NSString *minute = self.minute.length == 3 ? [NSString stringWithFormat:@"%d", self.minute.intValue] : [NSString stringWithFormat:@"0%d", self.minute.intValue];
     NSString *second = self.second.length == 3 ? [NSString stringWithFormat:@"%d", self.second.intValue] : [NSString stringWithFormat:@"0%d", self.second.intValue];
     
-    switch (_dateInterval) {
+    switch (self.dateInterval) {
         case YEAR_DAY:
         {
             self.selectString = [NSString stringWithFormat:@"%d-%@-%@", [self.year intValue], month, day];
@@ -318,7 +318,7 @@
 // UIPickerView选择哪一行
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 
-    switch (_dateInterval) {
+    switch (self.dateInterval) {
         case YEAR_DAY:
         {
             switch (component) {
@@ -487,11 +487,11 @@
     NSComparisonResult result = [dt1 compare:dt2];
     switch (result) {
             //date02比date01大
-        case NSOrderedAscending: ci=1;break;
+        case NSOrderedAscending: ci = 1; break;
             //date02比date01小
-        case NSOrderedDescending: ci=-1;break;
+        case NSOrderedDescending: ci = -1; break;
             //date02=date01
-        case NSOrderedSame: ci=0;break;
+        case NSOrderedSame: ci = 0; break;
         default: NSLog(@"erorr dates %@, %@", dt2, dt1);break;
     }
     return ci;

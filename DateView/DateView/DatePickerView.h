@@ -39,7 +39,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSMutableArray *dayArray;    // 日数组
 @property (strong, nonatomic) NSMutableArray *hourArray;   // 时数组
 @property (strong, nonatomic) NSMutableArray *minuteArray; // 分数组
-@property (strong, nonatomic) NSMutableArray *secondArray; // 分数组
+@property (strong, nonatomic) NSMutableArray *secondArray; // 秒数组
 @property (strong, nonatomic) NSArray *timeArray;          // 当前时间数组
 
 @property (copy, nonatomic) NSString *year;         // 选中年
